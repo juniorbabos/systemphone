@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% block title %}Formulário de venda{% endblock title %}
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  {% if fornecedor.pk  %}
+<h1>Editar Venda</h1>
+
+
+{% else %}
+<h4>Cadastrar Venda</h4>
+{%endif%}
+
+
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+</main>
+{% endblock %}
+
+

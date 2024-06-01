@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Listar Compras{% endblock title %}
+{% block conteudo %}
+
+<main class="container">
+
+    <h4>ORÇAMENTOS</h4>
+    <a href="/admin/transacao/compra/add/" target="_blank" class="btn btn-primary btn-sm"> CRIAR ORÇAMENTO</a> Somente pelo admin
+    <br><br>
+  <form method="GET">
+    <div class="input-group">
+      <input type="search" name ="buscar" class="form-control rounded" id ="text" placeholder="Buscar pelo numero do orçamento ou nome cliente" aria-label="Search"
+        aria-describedby="search-addon"/>
+      <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+    </div>
+  </form>
+  <br>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fornecedor</th>
+            <th scope="col">Nota Fiscal</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor Total</th>
+            <th scope="col">Ações</th>
+        </thead>
+        <tbody>
+        
+            {% for compra in compra_list %}
+            
+            <tr>
+              <th scope="row">{{ compra.pk }}</th>
+                <td> {{ compra.fornecedor.nome }}</td>
+              <td> {{ compra.nota_fiscal}}</td>
+                <td>{{ compra.data }}</td>
+              <td>{{ compra.valor_compra }}</td>
+              <td>
+                 <a href="/orcamento/{{ compra.pk }}" target="_blank" class="btn btn-light btn-sm"> Imprímir</a>
+                 <a href="{% url 'delete_orcamento' pk=compra.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+              </td>
+            </tr>
+            {% endfor %}
+         
+        
+        </tbody>
+      </table>
+   
+</main>
+<br>
+<br>
+
+{% endblock %}

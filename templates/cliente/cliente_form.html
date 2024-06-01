@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{%load static%}
+{% block title %}Formulário do cliente{% endblock title %}
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  {% if cliente.pk  %}
+<h4>Editar Cliente</h4>
+
+
+{% else %}
+<h4>Cadastrar Cliente</h4>
+{%endif%}
+
+<img src="{% static 'img/icons8-cliente-64.png' %}" height="60" width="60 ">
+<br>
+<p> <b>{% if cliente.pk  %} Editar o cliente {{cliente.nome }} {% else %}Cadastro de cliente {%endif%} para realizar vendas e ordem de serviços.</b></p>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+</main>
+{% endblock %}
+
+
+
+
+
+
+  
+
+

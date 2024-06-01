@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Listar Categorias{% endblock title %}
+{% block conteudo %}
+
+<main class="container">
+ 
+    <h1>ESTOQUE</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+      <input type="search" name ="pesquisa"class="form-control rounded" id ="text" placeholder="pesquisar" aria-label="Search"
+        aria-describedby="search-addon"/>
+      <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+    </div>
+  </form>
+  <br>
+  
+   
+   <div>
+      <a href="{% url 'cadastrar_produto' %}" class="btn btn-primary">Cadastrar Produto</a>
+      <a href="{% url 'cadastro_categoria' %}" class="btn btn-primary">Cadastrar Categoria</a>
+    </div>
+    <br>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Ações</th>
+        </thead>
+        <tbody>
+        
+            {% for categoria in categoria_list %}
+            
+            <tr>
+              <th scope="row">{{ categoria.pk }}</th>
+                <td> {{ categoria.categoria }}</td>
+              <td>
+                 <a href="{ url 'update_produto' pk=produto.pk %}" class="btn btn-primary btn-sm">Alterar</a>
+                <a href="{ url 'delete_produto' pk=produto.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+              </td>
+            </tr>
+            {% endfor %}
+         
+        
+        </tbody>
+      </table>
+   
+</main>
+<br>
+<br>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!-- ordem_servico_form.html -->
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block title %}Formulário de serviços{% endblock title %}
+
+
+{% block conteudo %}
+<div class="container">
+    <br>
+    <br>
+    {%if object.pk %}
+        <a href="{% url 'visualizar_os' pk=object.pk %}" class="btn btn-info">Voltar OS</a>
+        <br>    <br> 
+    {%endif%}
+<h4>Cadastrar OS</h4>
+  
+    <form method="POST">
+            {% csrf_token %}
+            {{ form | crispy}}
+            <br>
+            
+            
+            <button type="submit" class="btn btn-primary">SALVAR</button>
+        </form>
+        
+</div>
+<br>
+<br>
+{% endblock conteudo %}
+
+<!--
+    <div id="div_id_data" class="mb-3">
+                <label class="form-label" for="id_cliente">Data inicial</label>
+                <input type="date" id="id_data" class="dateinput form-control" name="data">
+            </div>
+-->

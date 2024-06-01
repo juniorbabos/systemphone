@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pagina home{% endblock title %}
+
+{% block conteudo %}
+
+
+
+
+    <main class="container">
+      {% if messages %}
+             
+      <ul class="messages">
+        
+          {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+      </ul>
+      
+      {% endif %}
+      
+      <img src="{% static 'img/logowhite.png' %}" height="60" width="180">
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{% static 'img/icons8-produtos-48.png' %}" height="48" width="48">
+                  <h5 class="card-title">ESTOQUE ENTRADA E SAÍDA</h5>
+                  <p class="card-text"><p>Entrada e saída do estoque, cadastrando compras e vendas para ter o controle das receitas de entrada e saída.</p>
+                  <a href="{% url 'listar_entrada' %}" class="btn btn-primary">Listar Entrada</a>
+                  <a href="{% url 'listar_saida' %}" class="btn btn-primary" >Listar Saída</a>
+                  <a href="{% url 'criar_entrada_estoque' %}" class="btn btn-success" >Cadastrar Entrada</a>
+                  <a href="{% url 'criar_saida_estoque' %}" class="btn btn-success" >Cadastrar Saída</a>
+                </div> 
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{% static 'img/ordem-64.png' %}" height="48" width="48">
+                  <h5 class="card-title">CADASTRAR DE OS E SERVIÇOS</h5>
+                  <p class="card-text">Cadastrar serviços para serem emitos ordem de serviços. </p><br>
+                  <a href="{% url 'listar_orcamento' %}" class="btn btn-primary">Listar OS</a>
+                  <a href="{% url 'listar_orcamento' %}" class="btn btn-primary">Listar Serviços</a>
+                  <a href="{%url 'ordem_servico_create' %}" class="btn btn-success">Cadastrar OS</a>
+                  <a href="{%url 'cadastrar_servico' %}" class="btn btn-success">cadastrar Serviço</a>
+              
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{% static 'img/icons8-produtos-94.png' %}" height="48" width="48">
+                  <h5 class="card-title">PRODUTOS E CATEGORIA</h5>
+                  <p class="card-text">Lista de produtos cadastrados e categorias cadastradas no sistema, será redirecionados aos produtos cadastrados mesmo que não houver estoque.</p>
+                  <a href="{% url 'home_estoque' %}" class="btn btn-primary">Listar Produtos</a>
+                  <a href="{% url 'cadastro_categoria' %}" class="btn btn-success">Cadastrar Categoria</a>
+                  <a href="{% url 'cadastrar_produto' %}" class="btn btn-success">Cadastrar Produto</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{% static 'img/compra-48.png' %}" height="48" width="48">
+                  <h5 class="card-title">COMPRAR PRODUTOS</h5>
+                  <p class="card-text">Compra de produtos, lançamento de entradas no estoque.</p><br>
+                  <a href="{% url 'listar_orcamento' %}" class="btn btn-primary">Listar Compras</a>
+                  <a href="/admin/transacao/compra" class="btn btn-success" target="_blank">Cadastrar Compras</a>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  
+                  <img src="{% static 'img/icons8-cliente-48.png' %}" height="48" width="48">
+                  <h5 class="card-title">CLIENTE</h5>
+                  <p class="card-text">Cadastro de cliente para redirecionar vendas e controles como garantia do cliente e relatórios afins.</p>
+                  <a href="{%url 'clientes' %}" class="btn btn-primary"> Listar Clientes</a>
+                  <a href="{%url 'cadastrar_cliente' %}" class="btn btn-success">Cadastrar Cliente</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{% static 'img/vendas-48.png' %}" height="48" width="48">
+                  <h5 class="card-title">VENDER PRODUTO</h5>
+                  <p class="card-text">Venda de produtos, tirando do estoque o valor necessário.</p><br>
+                  <a href="/admin/transacao/venda" class="btn btn-primary" target="_blank">Vender produto</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+
+{% endblock %}

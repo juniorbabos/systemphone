@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block title %}Formulário de fornecedor{% endblock title %}
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  {% if fornecedor.pk  %}
+<h4>Editar fornecedor</h4>
+{% else %}
+<h4>Cadastrar fornecedor</h4>
+{%endif%}
+<img src="{% static 'img/icons8-fornecedor-94.png' %}" height="94" width="94">
+<p>Fornecedor está ligado diretamnete para o cadastro de compras,<br>
+   precisa ser cadastrado o fornecedor assim poderá realizar o cadastro <br>
+   e entrada das compras.</p>
+
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+</main>
+{% endblock %}
+
+
+
+
+
+
+  
+
+

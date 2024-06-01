@@ -1,0 +1,90 @@
+<!-- ordem_servico_detail.html -->
+{% extends "base.html" %}
+{% block title %}Detalhes Os{% endblock title %}
+
+{% block conteudo %}
+<br><br>
+<div class="container">
+  <main class="container">
+    <div class="row">
+        <div class="col-sm-12">
+          
+          <div class="card">
+
+            <div class="card-body">
+              <table class="table">
+                
+                  <tr>
+                    <th> <img src="/static/img/check-box_6399627.png" height="50" width="50">
+                    
+                      <h4>OS Nº: {{ object.pk }}</h4>
+                    Cliente: {{ object.cliente }}<br>
+                    <label>Endereço: {{ object.cliente.endereco }}</label><br>
+                    <label>Telefone: {{ object.cliente.telefone }}</label><br>
+                    <label> {{ object.cliente.cpf }}</label>
+                    </th>
+                    <th></th>
+                    <th>{{ object.get_situacao_display }}</th>
+                    <th>Data: {{ object.data|date:"d/m/Y" }}</th>
+                  </tr>
+               
+                <tbody>
+                
+                    <tr>
+                      <td>Serviço: {{ object.servico.servico }}</td>
+                      <td></td>
+                      <td></td>
+                      <td> </td>
+                      
+                    </tr>
+                   
+                    
+                <tr>
+                 
+                  <td>
+                    Observação: {{object.observacao}}
+                  </td>
+                  <TD></TD>
+                  <TD></TD>
+                  <TD></TD>
+                </tr>
+               <TR>
+                
+                <TD>Conclusão: {{ object.solucao }}</TD>
+                <TD</TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+               </TR>
+               <TR>
+                <TD></TD>
+                <TD>__________________________________</TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+               </TR>
+               <TR>
+                <TD></TD>
+                <TD>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Local Certo &nbsp;
+                  {%if object.data_termino%}
+                    Finalizado em: {{ object.data_termino|date:"d/m/Y" }}</TD>
+                  {%endif%}
+                    <TD></TD>
+                <TD></TD>
+               </TR>
+              
+              </table>
+             
+              
+              
+            </div> 
+          
+          </div><br>
+         
+          <a href="{% url 'finalizar_os' pk=object.pk %}" class="btn btn-primary btn-sm">Cadastrar Solução</a>
+          
+        </div>
+      </div>
+  
+</div>
+{% endblock conteudo %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block title %}Formulario saída de estoque{% endblock title %}
+
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+    <a href="{% url 'home_estoque' %}">
+      <button class="btn btn-success" type="button">Produtos Cadastrados</button>
+    </a>
+   
+    <br>
+<h4>Saída de estoque</h4>
+<p>Será realizado um ajuste diretamente no estoque do produto sem realizar receita de saída, ao realizar a saída esse caso precise retornar 
+  o estoque será preciso realizar o processo de entrada no estoque.
+</p>
+<form method="POST">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary">Salvar saída</button>
+</form>
+<br>
+</main>
+{% endblock %}
+
+

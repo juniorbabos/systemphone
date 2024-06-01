@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block title %}Confirmação de exclusão{% endblock title %}
+
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  <div class="alert alert-danger" role="alert">
+    <h4>Deletar o produto</h4>
+  </div>
+
+
+<P><b>Deseja realmente excluir o produto com os dados abaixo ?</b></P>
+<p>Produto: {{ product.name_product }}</p>
+<p>Descrição: {{ product.descricao }}</p>
+<p>Categoria: {{product.categoria.categoria}}</p>
+<p>Codigo de Barra: {{product.codigo_barra}}</p>
+<form method="POST">
+    {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+  <a href="{% url 'home_estoque' %}" class="btn btn-primary">Cancelar</a>
+</form>
+<br>
+</main>
+{% endblock %}

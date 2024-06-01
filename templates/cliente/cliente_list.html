@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Listar Clientes{% endblock title %}
+{% block conteudo %}
+
+
+<main class="container">
+
+  {% if messages %}
+             
+  <ul class="messages">
+    
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+  </ul>
+  
+  {% endif %}
+ 
+    <h4>CLIENTES</h4>
+  <form method="GET">
+    
+    <div class="input-group">
+            <input type="search" name ="buscar" class="form-control rounded" placeholder="Buscar por nome, telefone e cpf" aria-label="Search"
+                aria-describedby="search-addon"/>
+            <button type="submit"  class="btn btn-outline-primary">Pesquisar</button>
+    </div>
+  </form>
+  <br>
+
+   
+   <div>
+      <a href="{% url 'cadastrar_cliente' %}" class="btn btn-primary">Cadastrar Cliente</a>
+      
+    </div>
+    <br>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Endereco</th>
+            <th scope="col">Cpf</th>
+            <th scope="col">Ações</th>
+        </thead>
+        <tbody>
+        
+            {% for cliente in cliente_list %}
+            
+            <tr>
+              <th scope="row">{{ cliente.pk }}</th>
+                <td> {{ cliente.nome }}</td>
+              <td> {{ cliente.telefone}}</td>
+                <td>{{ cliente.endereco }}</td>
+                <td>{{ cliente.cpf }}</td>
+              <td>
+                 <a href="{% url 'atualiza_cliente' pk=cliente.pk %}" class="btn btn-primary btn-sm">Alterar</a>
+                <a href="{% url 'delete_cliente' pk=cliente.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+              </td>
+            </tr>
+            {% endfor %}
+         
+        
+        </tbody>
+      </table>
+   
+</main>
+<br>
+<br>
+
+{% endblock %}

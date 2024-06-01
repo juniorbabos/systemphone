@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pagina Graficos{% endblock title %}
+
+{% block conteudo %}
+
+
+
+    <main class="container">
+        <br>
+        <div class="row">
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/vendas-48.png' %}" height="60" width="60"><h3>R$: {{calculo.subtotal__sum}}</h3>
+                  <h6 class="card-title">Total de vendas realizadas </h6>
+                  
+                </div> 
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/icons8-venda-64.png' %}" height="60" width="60" title="ULTIMOS 30 DIAS DE VENDA UTILIZANDO SAÍDA DO ESTOQUE"><a  href="{% url 'ultimasvendas' %}"><img src="{% static 'img/icons8-visualizar-arquivo-48.png' %}" height="48" width="48 "></a><h3>R$: {{vendas_mes.subtotal__sum}}</h3>
+                  <h6 class="card-title">Vendidos nos ultimos 30 dias </h6>
+                  
+                </div> 
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/compra-48.png' %}" height="60" width="60"><h3>R$: {{vendasrs.valor_venda__sum}}</h3>
+                  <h6 class="card-title">Total de vendidos  </h6>
+                  
+                </div> 
+              </div>
+            </div>
+             
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-cliente-64.png' %}" height="60" width="60"><h3>{{clientes}}</h3>
+                    <h6 class="card-title">Clientes cadastrados </h6>
+                    
+                  </div> 
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-fornecedor-94.png' %}" height="60" width="60"><h3>{{fornecedor}}</h3>
+                    <h6 class="card-title">Fornecedor cadastrados </h6>
+                    
+                  </div> 
+                </div>
+              </div>
+        </div>
+       
+        <br><br>
+        <div class="row">
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/icons8-compra8.png' %}" height="60" width="60"><h3>R$: {{comprasrs.valor_compra__sum}}</h3>
+                  <h6 class="card-title">Total de compras</h6>
+                  
+                </div> 
+              </div>
+            </div>
+           
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-saida.png' %}" height="60" width="60"><h3> {{qnt_saida.quantidade__sum}}</h3>
+                    <h6 class="card-title">Saídas do estoque </h6>
+                    
+                  </div> 
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-entrada.png' %}" height="60" width="60"><h3> {{qnt_entrada.quantidade__sum}}</h3>
+                    <h6 class="card-title">Entradas do estoque</h6>
+                    
+                  </div> 
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-produtos-94.png' %}" height="60" width="60"><h3>{{qnt_produtos}}</h3>
+                    <h6 class="card-title">Produtos cadastrados </h6>
+                    
+                  </div> 
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card">
+                  <div class="card-body">
+                      <img src="{% static 'img/icons8-produtos-94.png' %}" height="60" width="60"><h3>{{produtos.estoque_atual__sum}}</h3>
+                    <h6 class="card-title">Em estoque de produtos </h6>
+                    
+                  </div> 
+                </div>
+              </div>
+        </div><br>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              
+              <th scope="col"> Gráfico</th>
+              <th scope="col">Descrição</th>
+            
+          </thead>
+          <tbody>
+           
+           
+              <tr>
+                <th scope="row"> <img src="{% static 'img/icons8-venda-64.png' %}" height="20" width="20" >
+                </th>
+                  <td> Total de vendas realizadas nos ultimos 30 dias utilizando saída do estoque. </td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="{% static 'img/icons8-produtos-94.png' %}" height="20" width="20"></th>
+                  <td> Total de produtos cadastrados no sistema</td>
+              </tr>
+              <tr>
+                <th scope="row"><img src="{% static 'img/vendas-48.png' %}" height="20" width="20"></th>
+                  <td> Sistema calcula todas as vendas realizadas utilizando o menu saída do estoque.</td>
+              </tr> 
+              <tr>
+                <th scope="row"><img src="{% static 'img/icons8-cliente-64.png' %}" height="20" width="20"></th>
+                  <td> Sistema faz uma contagem de todos os clientes cadastrados.</td>
+              </tr>
+           
+          
+          </tbody>
+        </table>
+        
+      </main>
+
+{% endblock %}

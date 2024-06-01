@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% block title %}Confirmar exclusão{% endblock title %}
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  
+  <div class="alert alert-danger" role="alert">
+    <h4>Deletar o cliente</h4>
+  </div>
+
+<P><b>Deseja realmente excluir o cliente com os dados abaixo ?</b></P>
+<p>Nome: {{ cliente.nome }}</p>
+<p>CPF: {{ cliente.cpf }}</p>
+<p>Telefone: {{cliente.telefone}}</p>
+<p>Endereço: {{cliente.endereco}}</p>
+<form method="POST">
+    {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+  <a href="{% url 'clientes' %}" class="btn btn-primary">Cancelar</a>
+</form>
+<br>
+</main>
+{% endblock %}
+
+

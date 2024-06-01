@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% block title %}Confirmar exclusão{% endblock title %}
+{% block conteudo %}
+<main class="container">
+  <br>
+ 
+  
+  <div class="alert alert-danger" role="alert">
+    <h4>Deletar o compra</h4>
+  </div>
+  <tr>
+      <td></td>
+   
+
+<P><b>Deseja realmente excluir a compra com os dados abaixo ?</b></P>
+<P><b>Lembrando que será empactado na receita.</b></P>
+<p>Nome do cliente: {{ compra.fornecedor.nome }}</p>
+<p>NOTA FISCAL: {{ compra.nota_fiscal}}</p>
+
+<p>DATA: {{ compra.data }}</p>
+
+<table class="table table-striped table-bordered table-hover  text-center">
+  <thead class="btn-primary print">
+    <tr>
+      <th>#ID</th>
+      <th class="text-center">PRODUTO</th>
+      <th>VALOR UNITÁRIO</th>
+      <th>QUANTIDADE</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for item_do_orcamento in compra.produto_set.all %}
+    <tr>
+      <td>{{ item_do_orcamento.id }}</td>
+      <td class="text-center">{{ item_do_orcamento.material }}</td>
+      <td>{{ item_do_orcamento.preco }}</td>
+      <td>{{ item_do_orcamento.quantidade }}</td>
+    </tr>
+     {% endfor %}
+     
+  </tbody>
+</table>
+
+  <h4>TOTAL: {{ compra.valor_compra }}</h4>
+
+<form method="POST">
+    {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+  <a href="{% url 'clientes' %}" class="btn btn-primary">Cancelar</a>
+</form>
+<br>
+</main>
+{% endblock %}
+

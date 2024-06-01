@@ -1,0 +1,96 @@
+<!-- ordem_servico_list.html -->
+{% extends "base.html" %}
+{% block title %}Listar OS{% endblock title %}
+{% block conteudo %}
+<div class="container">
+  {% if messages %}
+             
+  <ul class="messages">
+    
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+  </ul>
+  
+  {% endif %}
+  <h4>Ordens de Serviço</h4>
+
+  <a
+    href="{% url 'ordem_servico_create' %}"
+    class="btn btn-primary"
+  >Adicionar</a>
+
+  <div class="row mt-3">
+    <div class="col-sm-2">
+      <h3>Situação</h3>
+      <div class="list-group">
+        <a
+          href="{% url 'home_servicos' %}"
+          class="list-group-item list-group-item-action"
+        >
+          Limpar filtro
+        </a>
+        <a
+          href="{% url 'home_servicos' %}?search=pe"
+          class="list-group-item list-group-item-action"
+        >
+          Pendente
+        </a>
+        <a
+          href="{% url 'home_servicos' %}?search=ca"
+          class="list-group-item list-group-item-action"
+        >
+          Cancelado
+        </a>
+        <a
+          href="{% url 'home_servicos' %}?search=an"
+          class="list-group-item list-group-item-action"
+        >
+          Andamento
+        </a>
+        <a
+          href="{% url 'home_servicos' %}?search=ap"
+          class="list-group-item list-group-item-action"
+        >
+          Aprovado
+        </a>
+      </div>
+
+    </div>
+    <div class="col-sm-10">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Num</th>
+            <th>Cliente</th>
+            <th>Situação</th>
+            <th>Serviço</th>
+            <th>Valor</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+            <tr>
+              <td>{{ object.pk }}</td>
+              <td>
+               {{ object.cliente.nome }}
+              </td>
+              <td>{{ object.get_situacao_display }}</td>
+              <td>{{ object.servico.servico }}</td>
+              <td>R$: {{ object.valor }}</td>
+              
+              <td>
+               <a href="{% url 'visualizar_os' pk=object.pk %}" class="btn btn-light btn-sm">Visualizar</a>
+             </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock conteudo %}

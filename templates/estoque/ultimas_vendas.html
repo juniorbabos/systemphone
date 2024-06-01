@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Vendas nos ultímos 30 dias{% endblock title %}
+
+{% block conteudo %}
+
+<main class="container">
+ 
+    <h4>Vendas nos ultímos 30 dias</h4>
+  <form method="GET">
+    <div class="input-group">
+      <input type="search" name ="buscar" class="form-control rounded" id ="text" placeholder="Buscar por nome do produto, codigo de barras e descrição" aria-label="Search"
+        aria-describedby="search-addon"/>
+      <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+    </div>
+  </form>
+  <br>
+  
+   
+   <div>
+      <a href="{% url 'cadastrar_produto' %}" class="btn btn-primary">Cadastrar Produto</a>
+      <a href="{% url 'cadastro_categoria' %}" class="btn btn-primary">Cadastrar Categoria</a>
+      <a href="{% url 'criar_saida_estoque' %}" class="btn btn-danger">Saída</a>
+      <a href="{% url 'criar_entrada_estoque' %}" class="btn btn-success">Entrada</a>
+    </div>
+    <br>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Código de barra</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Qnt Saída</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Data Venda</th>
+           
+        </thead>
+        <tbody>
+        
+            {% for produto in vendas_mes %}
+            
+            <tr>
+              <th scope="row">{{ produto.pk }}</th>
+                <td> {{ produto.saida.codigo_barra }}</td>
+              <td> {{ produto.saida}}</td>
+                <td>{{ produto.saida.categoria }}</td>
+              <td>{{ produto.quantidade }}</td>
+              <td>{{ produto.subtotal }}</td>
+               <td>{{ produto.data }}</td>
+              
+            </tr>
+            {% endfor %}
+         
+        
+        </tbody>
+      </table>
+   
+</main>
+<br>
+<br>
+
+{% endblock %}

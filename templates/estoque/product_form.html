@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{%load static%}
+
+{% block title %}Formulário de produtos{% endblock title %}
+
+{% block conteudo %}
+{{vendas_mes.subtotal__sum}}
+<main class="container">
+  <br>
+ 
+    <a href="{% url 'cadastro_categoria' %}">
+        <button class="btn btn-primary" type="button">Cadastrar Categoria</button>
+    </a>
+    <a href="{% url 'home_estoque' %}">
+      <button class="btn btn-info" type="button">Produtos Cadastrados</button>
+    </a>
+   
+    <br> <br>
+
+    
+{% if product.pk  %}
+<h4>Editar Produto <img src="{% static 'img/icons8-produto.gif' %}" height="48" width="48"></h4>
+{% else %}
+<h4>Cadastrar Produto <img src="{% static 'img/icons8-produto.gif' %}" height="48" width="48"></h4>
+{%endif%}
+<br>
+<form method="POST">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<br>
+</main>
+{% endblock %}
+
+
+
+
+
+
+  
+
+

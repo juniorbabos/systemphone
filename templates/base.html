@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="{% static 'estilo.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="{% static 'jquery.mask.js' %}"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <img src="{% static 'img/logo-semfundo.png' %}" height="42" width="120">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'img/icons8-opção-64.png' %}" height="20" width="20 ">  Opções
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'home' %}">Início</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_cliente' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastar Cliente</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_fornecedor' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Fornecedor</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_produto' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastar Produto</a></li>
+                  <li><a class="dropdown-item" href="{% url 'ordem_servico_create' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar OS</a></li>
+                  <li><a class="dropdown-item" href="/admin/transacao/compra/add/" target="_blank" ><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Compra</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home_servicos' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar OS</a></li>     
+                  <li><a class="dropdown-item" href="{% url 'listar_orcamento' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Compras</a></li>
+                  <li><a class="dropdown-item" href="{% url 'clientes' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Clientes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home_estoque' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar produtos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar_orcamento' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Orçamentos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'criar_entrada_estoque' %}"><img src="{% static 'img/icons8-entrada-48.png' %}" height="20" width="20 "> Entrada de estoque</a></li>
+                  <li><a class="dropdown-item" href="{% url 'criar_saida_estoque' %}"><img src="{% static 'img/icons8-produtos-94.png' %}" height="20" width="20 "> Saída de estoque</a></li>
+                  <li><a class="dropdown-item" href="{% url 'graficos' %}"><img src="{% static 'img/icons8-gráfico-combinado-48.png' %}" height="20" width="20 "> Gráficos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'ultimasvendas' %}"><img src="{% static 'img/icons8-vendas-80.png' %}" height="20" width="20 "> Ultimas vendas</a></li>
+                </ul>
+              </li>
+
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'img/icons8-cliente-64.png' %}" height="20" width="20 "> Pessoa
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'home' %}">Início</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_cliente' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Cliente</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_fornecedor' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Fornecedor</a></li>
+                  <li><a class="dropdown-item" href="{%url 'clientes' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Clientes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar_fornecedor' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Fornecedor</a></li>
+
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'img/cadastro.png' %}" height="20" width="20 ">  OS
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'home' %}">Início</a></li>
+                  <li><a class="dropdown-item" href="{% url 'ordem_servico_create' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar OS</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home_servicos' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar OS</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar_orcamento' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Orçamentos COMPRA</a></li>
+                  <li><a class="dropdown-item" href="/admin/transacao/compra/add/" target="_blank" ><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Compra</a></li>
+            
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'img/icons8-produtos-94.png' %}" height="20" width="20 ">  Estoque 
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'home' %}">Início</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar_produto' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Produto</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastro_categoria' %}"><img src="{% static 'img/cadastro.png' %}" height="20" width="20 "> Cadastrar Categoria</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home_estoque' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar produtos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar_entrada' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Entrada</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar_saida' %}"><img src="{% static 'img/icons8-revista-48.png' %}" height="20" width="20 "> Listar Saída</a></li>
+                  <li><a class="dropdown-item" href="{% url 'criar_entrada_estoque' %}"><img src="{% static 'img/icons8-entrada-48.png' %}" height="20" width="20 "> Entrada de estoque</a></li>
+                  <li><a class="dropdown-item" href="{% url 'criar_saida_estoque' %}"><img src="{% static 'img/icons8-produtos-94.png' %}" height="20" width="20 "> Saída de estoque</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+ <!-- TODO O CONTEÚDO DE UM TEMPLATE DEVE SER EXIBIDO DENTRO DESSE BLOCK CONTEÚDO E O FINAL DELE. -->
+      <main>
+        {% if cadastrar_cliente %} 
+        <h1>mensagem aqui</h1>
+            {% for m in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                  <button type="button" class="close" data-dismiss="alert">
+                    <strong>{{m}}</strong>
+                  </button>
+              </div>
+            {% endfor %}
+        {% endif %}
+          {% block conteudo %}
+         
+          {% endblock conteudo %}
+      </main>
+
+ <!-- FINAL DO TEMPLATE, É AQUI QUE FINALIZA A PARTE DO TEMPLATE QUE CRIEI, COLOCANDO ENTRE ELES O CÓDIGO DESCRITO  -->
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <p>© Copyright 2024</p> 
+            </div>
+          </div>
+        </footer>
+</body>
+</html>
